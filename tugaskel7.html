@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP & Panduan Laboratorium Komputer RPL</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0A0F1D',
+                            800: '#111827',
+                            700: '#1F2937',
+                            600: '#374151'
+                        },
+                        cyber: {
+                            yellow: '#FFD700',
+                            gold: '#F59E0B',
+                            hover: '#EAB308'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glow-yellow { box-shadow: 0 0 20px rgba(255, 215, 0, 0.25); }
+        .glow-blue { box-shadow: 0 0 25px rgba(37, 99, 235, 0.2); }
+    </style>
+</head>
+<body class="bg-navy-900 text-slate-100 min-h-screen flex flex-col selection:bg-cyber-yellow selection:text-navy-900">
+
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-navy-900/90 backdrop-blur-md border-b border-yellow-500/20 px-4 lg:px-8 py-3.5 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="bg-gradient-to-tr from-yellow-500 to-amber-300 text-navy-900 p-2.5 rounded-xl shadow-lg shadow-yellow-500/20">
+                <i class="fa-solid font-bold text-xl fa-laptop-code"></i>
+            </div>
+            <div>
+                <h1 class="font-extrabold text-lg lg:text-xl tracking-tight text-white flex items-center gap-2">
+                    LAB RPL <span class="text-xs px-2 py-0.5 rounded-full bg-yellow-400/10 text-cyber-yellow border border-yellow-400/30 font-semibold">SYSTEM v2.5</span>
+                </h1>
+                <p class="text-xs text-slate-400 hidden sm:block">Rekayasa Perangkat Lunak - Technopark</p>
+            </div>
+        </div>
+        
+        <div class="flex items-center space-x-3">
+            <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Lab Online / Standby
+            </span>
+            <button id="mobileMenuBtn" class="lg:hidden text-cyber-yellow p-2 hover:bg-navy-800 rounded-lg">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN TWO COLUMN LAYOUT -->
+    <div class="flex-1 flex max-w-7xl w-full mx-auto px-4 lg:px-8 py-6 gap-8">
+        
+        <!-- SIDEBAR NAVIGATION -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition duration-300 ease-in-out lg:static lg:block w-72 bg-navy-800/90 lg:bg-transparent backdrop-blur-lg lg:backdrop-blur-none z-50 p-4 lg:p-0 flex-shrink-0 border-r lg:border-none border-slate-700/50">
+            <div class="sticky top-24 space-y-6">
+                
+                <!-- Navigation Links -->
+                <nav class="space-y-1.5">
+                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400 px-3 mb-2">Navigasi Utama</p>
+
+                    <a href="#rules" class="nav-link group flex items-center px-3.5 py-3 rounded-xl font-medium text-sm transition-all text-slate-300 hover:text-white hover:bg-navy-700/60 border border-transparent hover:border-slate-700">
+                        <i class="fa-solid fa-shield-halved w-6 text-cyber-yellow text-base"></i>
+                        <span>Tata Tertib & SOP</span>
+                    </a>
+
+                    <a href="#hardware" class="nav-link group flex items-center px-3.5 py-3 rounded-xl font-medium text-sm transition-all text-slate-300 hover:text-white hover:bg-navy-700/60 border border-transparent hover:border-slate-700">
+                        <i class="fa-solid fa-microchip w-6 text-cyber-yellow text-base"></i>
+                        <span>Hardware & Spek</span>
+                    </a>
+
+                    <a href="#schedule" class="nav-link group flex items-center px-3.5 py-3 rounded-xl font-medium text-sm transition-all text-slate-300 hover:text-white hover:bg-navy-700/60 border border-transparent hover:border-slate-700">
+                        <i class="fa-solid fa-calendar-days w-6 text-cyber-yellow text-base"></i>
+                        <span>Jadwal (Senin - Sabtu)</span>
+                    </a>
+
+                    <a href="#tutorials" class="nav-link group flex items-center px-3.5 py-3 rounded-xl font-medium text-sm transition-all text-slate-300 hover:text-white hover:bg-navy-700/60 border border-transparent hover:border-slate-700">
+                        <i class="fa-solid fa-circle-play w-6 text-cyber-yellow text-base"></i>
+                        <span>Video Tutorial SOP</span>
+                    </a>
+
+                    <a href="#report" class="nav-link group flex items-center px-3.5 py-3 rounded-xl font-medium text-sm transition-all text-slate-300 hover:text-white hover:bg-navy-700/60 border border-transparent hover:border-slate-700">
+                        <i class="fa-solid fa-triangle-exclamation w-6 text-cyber-yellow text-base"></i>
+                        <span>Lapor Kerusakan PC</span>
+                    </a>
+                </nav>
+
+                <!-- Quick Lab Status Box -->
+                <div class="p-4 rounded-2xl bg-gradient-to-b from-navy-700 to-navy-800 border border-yellow-500/20 glow-yellow space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-cyber-yellow uppercase tracking-wider">Info Ruangan</span>
+                        <i class="fa-solid fa-circle-info text-yellow-400 text-xs"></i>
+                    </div>
+                    <div class="text-xs space-y-1.5 text-slate-300">
+                        <div class="flex justify-between"><span>Kapasitas:</span> <span class="font-semibold text-white">36 PC Workstation</span></div>
+                        <div class="flex justify-between"><span>AC Status:</span> <span class="font-semibold text-emerald-400">22°C (Optimal)</span></div>
+                        <div class="flex justify-between"><span>Jaringan:</span> <span class="font-semibold text-blue-400">Fiber 500 Mbps</span></div>
+                    </div>
+                    <div class="pt-2 border-t border-slate-700/60">
+                        <a href="#report" class="block w-full py-2 text-center text-xs font-bold text-navy-900 bg-cyber-yellow hover:bg-yellow-400 rounded-lg transition shadow-md">
+                            <i class="fa-solid fa-wrench mr-1"></i> Bantuan Teknisi
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 min-w-0 space-y-12">
+            
+            <!-- HERO BANNER -->
+            <section class="relative rounded-3xl bg-gradient-to-r from-blue-900 via-navy-800 to-navy-900 p-6 lg:p-8 border border-yellow-500/30 overflow-hidden shadow-2xl glow-blue">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-yellow-400 pointer-events-none">
+                    <i class="fa-solid fa-code text-9xl"></i>
+                </div>
+                <div class="relative z-10 max-w-2xl space-y-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-yellow-400/10 text-cyber-yellow border border-yellow-400/30">
+                        <i class="fa-solid fa-star"></i> PANDUAN KESELAMATAN & PENGGUNAAN
+                    </span>
+                    <h2 class="text-2xl lg:text-4xl font-extrabold text-white leading-tight">
+                        Selamat Datang di Laboratorium <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500">Rekayasa Perangkat Lunak</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Pusat pengembangan perangkat lunak, pemrograman web, aplikasi mobile, dan jaringan dasar. Harap selalu mematuhi seluruh panduan dan tata tertib keselamatan selama berada di dalam lab.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 1: TATA TERTIB & SOP -->
+            <section id="rules" class="space-y-6 scroll-mt-24">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg bg-yellow-500/10 text-cyber-yellow border border-yellow-500/30">
+                            <i class="fa-solid fa-shield-halved text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Tata Tertib & SOP Laboratorium</h3>
+                            <p class="text-xs text-slate-400">Aturan standar operasional untuk ketertiban bersama</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <!-- Aturan Wajib -->
+                    <div class="p-5 rounded-2xl bg-navy-800 border border-slate-800 hover:border-yellow-500/40 transition">
+                        <div class="flex items-center space-x-3 mb-3 text-emerald-400 font-bold text-sm">
+                            <i class="fa-solid fa-circle-check text-lg"></i>
+                            <h4>HAL YANG WAJIB DILAKUKAN</h4>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                                <span>Melepas alas kaki dan menatanya di rak sepatu sebelum masuk ruangan.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                                <span>Mengisi **Buku Presensi/Logbook Digital** sebelum menggunakan PC Workstation.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                                <span>Melakukan **Shutdown** komputer dengan benar setelah jam praktikum selesai.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                                <span>Merapikan kembali kursi, keyboard, dan mouse ke posisi semula.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Aturan Larangan -->
+                    <div class="p-5 rounded-2xl bg-navy-800 border border-slate-800 hover:border-yellow-500/40 transition">
+                        <div class="flex items-center space-x-3 mb-3 text-rose-400 font-bold text-sm">
+                            <i class="fa-solid fa-circle-xmark text-lg"></i>
+                            <h4>DILARANG KERAS (LARANGAN)</h4>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-xmark text-rose-400 mt-0.5"></i>
+                                <span>Membawa **makanan atau minuman** mendekati meja komputer / perangkat keras.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-xmark text-rose-400 mt-0.5"></i>
+                                <span>Mengubah atau melepas instalasi kabel daya dan kabel LAN tanpa izin teknisi.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-xmark text-rose-400 mt-0.5"></i>
+                                <span>Menginstal perangkat lunak bajakan / game tanpa instruksi dari guru pengampu.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-xmark text-rose-400 mt-0.5"></i>
+                                <span>Merusak, mencoret, atau memindahkan aset inventaris laboratorium.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: KARTU HARDWARE LAB -->
+            <section id="hardware" class="space-y-6 scroll-mt-24">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg bg-yellow-500/10 text-cyber-yellow border border-yellow-500/30">
+                            <i class="fa-solid fa-microchip text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Inventaris & Perangkat Keras Lab</h3>
+                            <p class="text-xs text-slate-400">Pengenalan spesifikasi komputer dan sarana praktikum RPL</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Card 1 -->
+                    <div class="bg-navy-800 rounded-2xl p-5 border border-slate-800 hover:border-yellow-500/50 hover:shadow-xl transition group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-blue-600/10 text-blue-400 rounded-xl group-hover:bg-cyber-yellow group-hover:text-navy-900 transition">
+                                <i class="fa-solid fa-desktop text-xl"></i>
+                            </div>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-400/10 px-2.5 py-1 rounded-full border border-yellow-400/20">36 Unit</span>
+                        </div>
+                        <h4 class="font-bold text-white mb-1">Developer Workstation</h4>
+                        <p class="text-xs text-slate-400 mb-4">PC Utama Pengodean & Desain Web</p>
+                        <div class="space-y-2 text-xs border-t border-slate-700/60 pt-3 text-slate-300">
+                            <div class="flex justify-between"><span>Processor:</span> <span class="font-semibold text-white">Intel Core i7-12700</span></div>
+                            <div class="flex justify-between"><span>RAM:</span> <span class="font-semibold text-white">32GB DDR4 3200MHz</span></div>
+                            <div class="flex justify-between"><span>Storage:</span> <span class="font-semibold text-white">1TB NVMe M.2 SSD</span></div>
+                            <div class="flex justify-between"><span>GPU:</span> <span class="font-semibold text-white">NVIDIA RTX 3060 12GB</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-navy-800 rounded-2xl p-5 border border-slate-800 hover:border-yellow-500/50 hover:shadow-xl transition group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-purple-600/10 text-purple-400 rounded-xl group-hover:bg-cyber-yellow group-hover:text-navy-900 transition">
+                                <i class="fa-solid fa-server text-xl"></i>
+                            </div>
+                            <span class="text-xs font-bold text-purple-400 bg-purple-400/10 px-2.5 py-1 rounded-full border border-purple-400/20">2 Rack Unit</span>
+                        </div>
+                        <h4 class="font-bold text-white mb-1">Local Server & Database</h4>
+                        <p class="text-xs text-slate-400 mb-4">Server Deployment & Git Repositories</p>
+                        <div class="space-y-2 text-xs border-t border-slate-700/60 pt-3 text-slate-300">
+                            <div class="flex justify-between"><span>Processor:</span> <span class="font-semibold text-white">Dual Intel Xeon Silver</span></div>
+                            <div class="flex justify-between"><span>RAM:</span> <span class="font-semibold text-white">128GB ECC Registered</span></div>
+                            <div class="flex justify-between"><span>Storage:</span> <span class="font-semibold text-white">4TB Enterprise SAS RAID</span></div>
+                            <div class="flex justify-between"><span>OS:</span> <span class="font-semibold text-white">Ubuntu Server 24.04 LTS</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-navy-800 rounded-2xl p-5 border border-slate-800 hover:border-yellow-500/50 hover:shadow-xl transition group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-emerald-600/10 text-emerald-400 rounded-xl group-hover:bg-cyber-yellow group-hover:text-navy-900 transition">
+                                <i class="fa-solid fa-network-wired text-xl"></i>
+                            </div>
+                            <span class="text-xs font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full border border-emerald-400/20">Cisco Managed</span>
+                        </div>
+                        <h4 class="font-bold text-white mb-1">Network Infrastructure</h4>
+                        <p class="text-xs text-slate-400 mb-4">Switch Managed & Router Utama</p>
+                        <div class="space-y-2 text-xs border-t border-slate-700/60 pt-3 text-slate-300">
+                            <div class="flex justify-between"><span>Switch:</span> <span class="font-semibold text-white">48-Port Gigabit PoE+</span></div>
+                            <div class="flex justify-between"><span>Router:</span> <span class="font-semibold text-white">MikroTik CCR1009-7G</span></div>
+                            <div class="flex justify-between"><span>Topology:</span> <span class="font-semibold text-white">Star with VLAN Division</span></div>
+                            <div class="flex justify-between"><span>Bandwidth:</span> <span class="font-semibold text-white">Dedicated 500 Mbps</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-navy-800 rounded-2xl p-5 border border-slate-800 hover:border-yellow-500/50 hover:shadow-xl transition group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-amber-600/10 text-amber-400 rounded-xl group-hover:bg-cyber-yellow group-hover:text-navy-900 transition">
+                                <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
+                            </div>
+                            <span class="text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-full border border-amber-400/20">5 Kit Lengkap</span>
+                        </div>
+                        <h4 class="font-bold text-white mb-1">Crimping & Cable Tester Toolkits</h4>
+                        <p class="text-xs text-slate-400 mb-4">Peralatan Praktikum Jaringan Kabel UTP</p>
+                        <div class="space-y-2 text-xs border-t border-slate-700/60 pt-3 text-slate-300">
+                            <div class="flex justify-between"><span>Crimper:</span> <span class="font-semibold text-white">Tang Crimping RJ45/RJ11</span></div>
+                            <div class="flex justify-between"><span>Tester:</span> <span class="font-semibold text-white">Digital Cable LAN Tester</span></div>
+                            <div class="flex justify-between"><span>Konektor:</span> <span class="font-semibold text-white">RJ45 Cat6 Shielded</span></div>
+                            <div class="flex justify-between"><span>Kabel:</span> <span class="font-semibold text-white">UTP Belden Cat6 Roll</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: TABEL MATRIKS JADWAL (SENIN - SABTU) -->
+            <section id="schedule" class="space-y-6 scroll-mt-24">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg bg-yellow-500/10 text-cyber-yellow border border-yellow-500/30">
+                            <i class="fa-solid fa-calendar-days text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Matriks Jadwal Penggunaan & Piket Lab</h3>
+                            <p class="text-xs text-slate-400">Jadwal praktikum kelas & alokasi shift kebersihan dari Senin sampai Sabtu</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matriks Table Penggunaan Lab -->
+                <div class="bg-navy-800 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
+                    <div class="p-4 bg-navy-700/50 border-b border-slate-800 flex justify-between items-center">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-clock text-cyber-yellow"></i> Matriks Penggunaan Ruangan Lab (Senin - Sabtu)
+                        </h4>
+                        <span class="text-xs text-yellow-400 font-medium">Semester Ganjil 2026/2027</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="bg-navy-900/80 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+                                    <th class="py-3 px-4 border-r border-slate-800 w-28">Hari</th>
+                                    <th class="py-3 px-4 border-r border-slate-800">Sesi 1 (07.00 - 09.30)</th>
+                                    <th class="py-3 px-4 border-r border-slate-800">Sesi 2 (09.45 - 12.00)</th>
+                                    <th class="py-3 px-4 border-r border-slate-800">Sesi 3 (13.00 - 15.30)</th>
+                                    <th class="py-3 px-4">Sesi Sore (15.30 - 17.00)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                                <tr class="hover:bg-navy-700/30">
+                                    <td class="py-3 px-4 font-bold text-cyber-yellow border-r border-slate-800">SENIN</td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">X RPL 1</span><br><span class="text-slate-400">Pemrograman Dasar</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">X RPL 2</span><br><span class="text-slate-400">Dasar-Dasar RPL</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XI RPL 1</span><br><span class="text-slate-400">Pemrograman Web</span></td>
+                                    <td class="py-3 px-4 text-emerald-400 font-semibold"><i class="fa-solid fa-screwdriver-wrench mr-1"></i> Maintenance Rutin PC</td>
+                                </tr>
+                                <tr class="hover:bg-navy-700/30">
+                                    <td class="py-3 px-4 font-bold text-cyber-yellow border-r border-slate-800">SELASA</td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XI RPL 2</span><br><span class="text-slate-400">Basis Data & MySQL</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XII RPL 1</span><br><span class="text-slate-400">PBO / Java Advanced</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XII RPL 2</span><br><span class="text-slate-400">Mobile Apps (Flutter)</span></td>
+                                    <td class="py-3 px-4 text-slate-400">Bimbingan LKS Coding</td>
+                                </tr>
+                                <tr class="hover:bg-navy-700/30">
+                                    <td class="py-3 px-4 font-bold text-cyber-yellow border-r border-slate-800">RABU</td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">X RPL 2</span><br><span class="text-slate-400">Algoritma & Struktur Data</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XI RPL 1</span><br><span class="text-slate-400">Desain UI/UX (Figma)</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XI RPL 2</span><br><span class="text-slate-400">Backend API (Laravel)</span></td>
+                                    <td class="py-3 px-4 text-slate-400">Klub Web Development</td>
+                                </tr>
+                                <tr class="hover:bg-navy-700/30">
+                                    <td class="py-3 px-4 font-bold text-cyber-yellow border-r border-slate-800">KAMIS</td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XII RPL 1</span><br><span class="text-slate-400">Projek Kreatif (PKK)</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XII RPL 2</span><br><span class="text-slate-400">Projek Uji Kompetensi</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">X RPL 1</span><br><span class="text-slate-400">Komputer & Jaringan</span></td>
+                                    <td class="py-3 px-4 text-slate-400">Persiapan Sertifikasi IT</td>
+                                </tr>
+                                <tr class="hover:bg-navy-700/30">
+                                    <td class="py-3 px-4 font-bold text-cyber-yellow border-r border-slate-800">JUMAT</td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">XI RPL 1 & 2</span><br><span class="text-slate-400">Clean Code & DevOps</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800 text-rose-400 font-semibold" colspan="2">
+                                        <i class="fa-solid fa-mosque mr-1"></i> ISTIRAHAT SHOLAT JUMAT & BERSIH LAB
+                                    </td>
+                                    <td class="py-3 px-4 text-slate-400">Workshop Komunitas RPL</td>
+                                </tr>
+                                <tr class="hover:bg-navy-700/30 bg-yellow-400/5">
+                                    <td class="py-3 px-4 font-bold text-cyber-yellow border-r border-slate-800">SABTU</td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">Ekstrakurikuler</span><br><span class="text-slate-400">Competitive Coding</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800"><span class="font-bold text-white">Klub IoT & Robotik</span><br><span class="text-slate-400">Praktikum Hardware</span></td>
+                                    <td class="py-3 px-4 border-r border-slate-800 text-emerald-400 font-semibold"><i class="fa-solid fa-broom mr-1"></i> Sterilisasi Ruangan</td>
+                                    <td class="py-3 px-4 text-rose-400 font-bold">LAB CLOSED / SHUTDOWN</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Matriks Shift Piket Kebersihan Lab (Senin - Sabtu) -->
+                <div class="bg-navy-800 rounded-2xl p-5 border border-slate-800">
+                    <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-broom text-cyber-yellow"></i> Shift Petugas Piket Kebersihan & Ketertiban Lab (Senin - Sabtu)
+                    </h4>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
+                        <div class="p-3 bg-navy-900/90 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyber-yellow block mb-2 border-b border-slate-800 pb-1">SENIN</span>
+                            <ul class="space-y-1 text-slate-300">
+                                <li>• Ahmad Fikri</li>
+                                <li>• Budi Santoso</li>
+                                <li>• Citra Dewi</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 bg-navy-900/90 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyber-yellow block mb-2 border-b border-slate-800 pb-1">SELASA</span>
+                            <ul class="space-y-1 text-slate-300">
+                                <li>• Doni Kurnia</li>
+                                <li>• Erlina Sari</li>
+                                <li>• Farhan Rizky</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 bg-navy-900/90 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyber-yellow block mb-2 border-b border-slate-800 pb-1">RABU</span>
+                            <ul class="space-y-1 text-slate-300">
+                                <li>• Gilang Ramadhan</li>
+                                <li>• Hania Putri</li>
+                                <li>• Indra Wijaya</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 bg-navy-900/90 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyber-yellow block mb-2 border-b border-slate-800 pb-1">KAMIS</span>
+                            <ul class="space-y-1 text-slate-300">
+                                <li>• Kevin Sanjaya</li>
+                                <li>• Larasati Lestari</li>
+                                <li>• Muhammad Raihan</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 bg-navy-900/90 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyber-yellow block mb-2 border-b border-slate-800 pb-1">JUMAT</span>
+                            <ul class="space-y-1 text-slate-300">
+                                <li>• Naufal Azhar</li>
+                                <li>• Olivia Zalianty</li>
+                                <li>• Putu Putra</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 bg-navy-900/90 rounded-xl border border-yellow-500/30 bg-yellow-400/5">
+                            <span class="font-bold text-cyber-yellow block mb-2 border-b border-slate-800 pb-1">SABTU</span>
+                            <ul class="space-y-1 text-slate-300">
+                                <li>• Aditya Perkasa</li>
+                                <li>• Bella Saphira</li>
+                                <li>• Candra Wijaya</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- SECTION 4: VIDEO TUTORIAL SOP -->
+            <section id="tutorials" class="space-y-6 scroll-mt-24">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg bg-yellow-500/10 text-cyber-yellow border border-yellow-500/30">
+                            <i class="fa-solid fa-circle-play text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Video Tutorial SOP Laboratorium</h3>
+                            <p class="text-xs text-slate-400">Panduan visual prosedur operasional standar dan penanganan darurat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Video 1 -->
+                    <div class="bg-navy-800 rounded-2xl border border-slate-800 overflow-hidden group hover:border-yellow-500/40 transition">
+                        <div class="relative aspect-video bg-navy-900">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Tutorial SOP" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-cyber-yellow bg-yellow-400/10 px-2 py-0.5 rounded border border-yellow-400/20">Modul 01</span>
+                            <h4 class="font-bold text-sm text-white">Prosedur Nyala & Shutdown Tepat Workstation Lab</h4>
+                            <p class="text-xs text-slate-400">Langkah-langkah menyalakan daya, mengoperasikan sistem lunak, serta mematikan PC agar terhindar dari kerusakan OS.</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="bg-navy-800 rounded-2xl border border-slate-800 overflow-hidden group hover:border-yellow-500/40 transition">
+                        <div class="relative aspect-video bg-navy-900">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Tutorial Troubleshooting" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded border border-blue-400/20">Modul 02</span>
+                            <h4 class="font-bold text-sm text-white">Penanganan Pertama Masalah Jaringan LAN & PC</h4>
+                            <p class="text-xs text-slate-400">Panduan memeriksa koneksi kabel LAN, melakukan trouble-check IP Address, dan penanganan awal bila PC hang.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: FORM LAPORAN KERUSAKAN PC (REVISED & EXPANDED) -->
+            <section id="report" class="space-y-6 scroll-mt-24">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg bg-yellow-500/10 text-cyber-yellow border border-yellow-500/30">
+                            <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Form Tiket Laporan Kerusakan PC & Alat</h3>
+                            <p class="text-xs text-slate-400">Sistem tiket terpadu untuk pengaduan masalah perangkat teknis laboratorium</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-navy-800 rounded-2xl p-6 lg:p-8 border border-slate-800 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <form id="reportForm" class="space-y-5">
+                        
+                        <!-- Baris 1: Informasi Pelapor -->
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nama Pelapor *</label>
+                                <input type="text" required placeholder="Contoh: Pavito Kevin" 
+                                    class="w-full bg-navy-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-yellow focus:ring-1 focus:ring-cyber-yellow transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Kelas / Jurusan *</label>
+                                <select required class="w-full bg-navy-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-yellow focus:ring-1 focus:ring-cyber-yellow transition">
+                                    <option value="">-- Pilih Kelas --</option>
+                                    <option value="X RPL 1">X RPL 1</option>
+                                    <option value="X RPL 2">X RPL 2</option>
+                                    <option value="XI RPL 1">XI RPL 1</option>
+                                    <option value="XI RPL 2">XI RPL 2</option>
+                                    <option value="XII RPL 1">XII RPL 1</option>
+                                    <option value="XII RPL 2">XII RPL 2</option>
+                                    <option value="Guru / Pengampu">Guru / Pengampu</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">No. WhatsApp Pelapor *</label>
+                                <input type="tel" required placeholder="08xxxxxxxxxx" 
+                                    class="w-full bg-navy-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-yellow focus:ring-1 focus:ring-cyber-yellow transition">
+                            </div>
+                        </div>
+
+                        <!-- Baris 2: Detail Identifikasi Perangkat -->
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nomor PC / Workstation *</label>
+                                <input type="text" required placeholder="Contoh: PC-05 / PC-32 / Server-01" 
+                                    class="w-full bg-navy-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-yellow focus:ring-1 focus:ring-cyber-yellow transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Kategori Kendala *</label>
+                                <select required class="w-full bg-navy-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-yellow focus:ring-1 focus:ring-cyber-yellow transition">
+                                    <option value="">-- Pilih Kategori --</option>
+                                    <option value="Hardware - Display / Monitor">Hardware - Display / Monitor</option>
+                                    <option value="Hardware - Input Device (Keyboard/Mouse)">Hardware - Input (Keyboard/Mouse)</option>
+                                    <option value="Hardware - Komponen PC (RAM/CPU/Power)">Hardware - Komponen PC (RAM/CPU/Power)</option>
+                                    <option value="Software - OS Corrupt / BlueScreen / Virus">Software - OS Corrupt / Virus / Lag</option>
+                                    <option value="Software - Aplikasi Koding Terhapus/Error">Software - VS Code / Software Dev Error</option>
+                                    <option value="Jaringan - Putus Kabel LAN / No Internet">Jaringan - LAN Putus / Tidak Ada Internet</option>
+                                    <option value="Fasilitas Ruangan (AC, Kursi, Meja, Kelistrikan)">Fasilitas Ruangan (AC, Stopkontak, Meja)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Tingkat Urgensi *</label>
+                                <select required class="w-full bg-navy-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-yellow focus:ring-1 focus:ring-cyber-yellow transition">
+                                    <option value="Rendah">🟢 Rendah (Masih bisa dipakai praktikum)</option>
+                                    <option value="Sedang">🟡 Sedang (Mengganggu beberapa fungsi)</option>
+                                    <option value="Tinggi / Fatal">🔴 Tinggi / Fatal (PC Mati total / Bahaya listrik)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Baris 3: Tanggal & Waktu Terjadi Kerusakan -->
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Waktu Ditemukannya Kendala *</label>
+                                <input type="datetime-local" required 
+                                    class="w-full bg-navy-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-yellow focus:ring-1 focus:ring-cyber-yellow transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Unggah Foto Bukti Kerusakan (Opsional)</label>
+                                <input type="file" accept="image/*" 
+                                    class="w-full bg-navy-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cyber-yellow file:text-navy-900 hover:file:bg-yellow-400 transition cursor-pointer">
+                            </div>
+                        </div>
+
+                        <!-- Deskripsi Problem Rinci -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Deskripsi Kronologi & Detail Kerusakan *</label>
+                            <textarea rows="4" required placeholder="Jelaskan secara singkat apa yang terjadi (misal: Saat dinyalakan PC mengeluarkan suara beeping 3 kali, atau Keyboard tombol Enter tidak merespons)..." 
+                                class="w-full bg-navy-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-yellow focus:ring-1 focus:ring-cyber-yellow transition"></textarea>
+                        </div>
+
+                        <!-- Konfirmasi Pernyataan -->
+                        <div class="flex items-center space-x-2 pt-1">
+                            <input type="checkbox" id="confirmCheck" required class="rounded border-slate-700 text-cyber-yellow focus:ring-cyber-yellow bg-navy-900">
+                            <label for="confirmCheck" class="text-xs text-slate-400">Saya menyatakan bahwa data laporan kerusakan di atas sesuai dengan kondisi sebenarnya di lab.</label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-2">
+                            <button type="submit" class="w-full sm:w-auto px-8 py-3 bg-cyber-yellow hover:bg-yellow-400 text-navy-900 font-extrabold text-xs rounded-xl shadow-lg shadow-yellow-500/20 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> KIRIM LAPORAN KERUSAKAN TERAKREDITASI
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Alert Success Message (Hidden by default) -->
+                    <div id="successAlert" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-xl flex-shrink-0"></i>
+                        <div>
+                            <span class="font-bold">Tiket Laporan Kerusakan Berhasil Dibuat!</span>
+                            <p class="text-[11px] text-emerald-300/80">Kode Tiket: <span class="font-mono font-bold text-yellow-400">#TK-LAB-RPL-2026</span>. Tim teknisi akan menginspeksi PC yang dituju dalam waktu maksimal 1x24 jam.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 bg-navy-900 border-t border-slate-800 py-6 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p>© 2026 Laboratorium Rekayasa Perangkat Lunak - Technopark RPL.</p>
+            <div class="flex space-x-4 text-slate-300">
+                <a href="#rules" class="hover:text-cyber-yellow">SOP</a>
+                <a href="#hardware" class="hover:text-cyber-yellow">Hardware</a>
+                <a href="#schedule" class="hover:text-cyber-yellow">Jadwal Piket</a>
+                <a href="#report" class="hover:text-cyber-yellow">Lapor Kerusakan</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Toggle Mobile Navigation
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        // Close Mobile Menu on Link Click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            });
+        });
+
+        // Form Submit Simulation
+        const reportForm = document.getElementById('reportForm');
+        const successAlert = document.getElementById('successAlert');
+
+        reportForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show alert
+            successAlert.classList.remove('hidden');
+            
+            // Reset form fields
+            reportForm.reset();
+
+            // Auto hide alert after 7 seconds
+            setTimeout(() => {
+                successAlert.classList.add('hidden');
+            }, 7000);
+        });
+    </script>
+</body>
+</html>
